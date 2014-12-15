@@ -28,7 +28,7 @@ angular
             propSetter = $parse(prop).assign
             unsubscribe = this.subscribe (e) ->
                 if (e.hasValue())
-                    if(!$scope.$$phase)
+                    if(!$scope.$$phase && !$scope.$root.$$phase)
                         $scope.$apply ->
                             propSetter($scope, e.value())
                     else
